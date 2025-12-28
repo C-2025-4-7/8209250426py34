@@ -1,34 +1,37 @@
 #include<iostream>
 using namespace std;
-int main()
+int maxyue(int a, int b)
 {
-	const int size = 10;
-	int numbers[size];
-	int uniqueNumber[size];
-	int uniCount = 0;
-	cout << "请输入十个数" << endl;
-	for (int i = 0;i < size;i++)
+	int c;
+	while (a % b != 0)
 	{
-		cin >> numbers[i];
+		c = a % b;
+		a = b;
+		b = c;
 	}
-	for (int i = 0;i < size;i++)
+	return b;
+}
+int max(int a, int b)
+{
+	int c = (a > b ? a : b);
+	return c;
+}
+int minbei(int a, int b)
+{	
+	for (int c = max(a, b);0 == 0;c++)
 	{
-		bool isunique = 1;
-		for (int j = 0;j < uniCount;j++)
+		if (c % a == 0 && c % b == 0)
 		{
-			if (numbers[i] == uniqueNumber[j])
-			{
-				isunique = 0;
-				break;
-			}
-		}
-		if (isunique)
-		{
-			uniqueNumber[uniCount] = numbers[i];
-			uniCount++;
+			return c;
+			break;
 		}
 	}
-	cout << "不同的数字有" << endl;
-	for (int i = 0;i < uniCount;i++)
-		cout << uniqueNumber[i];
+}
+int main() 
+{
+	int m, n;
+	cin >> m >> n;
+	cout <<"最大公约数是" << maxyue(m, n) << endl;
+	cout <<"最小公倍数是" << minbei(m, n) << endl;
+	return 0;
 }
